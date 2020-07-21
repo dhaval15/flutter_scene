@@ -1,0 +1,9 @@
+Text (
+  "PROTOTYPE",
+  style : TextStyle (
+    letterSpacing : Lambdatm(1),
+    fontSize : 32,
+    wordSpacing : 0
+  ),
+  textAlign: TextAlign.center
+)
