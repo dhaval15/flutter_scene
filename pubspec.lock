@@ -102,11 +102,9 @@ packages:
   flurine_lambda:
     dependency: "direct main"
     description:
-      path: "."
-      ref: master
-      resolved-ref: c649a54a09d585a468480e96a7ecf34ac4f0180e
-      url: "git://github.com/dhaval15/flurine_lambda.git"
-    source: git
+      path: "../flurine_lambda"
+      relative: true
+    source: path
     version: "0.9.3+2"
   flutter:
     dependency: "direct main"

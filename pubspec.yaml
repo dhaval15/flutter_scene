@@ -13,9 +13,7 @@ dependencies:
   dart_style: any
   flutter_hsvcolor_picker: ^0.0.1
   flurine_lambda: 
-    git:
-      url: git://github.com/dhaval15/flurine_lambda.git
-      ref: master
+    path: ../flurine_lambda
   flutter:
     sdk: flutter
 
