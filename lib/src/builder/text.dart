@@ -51,13 +51,18 @@ class TextStyleBox extends MultiBox<TextStyle> {
   TextStyleBox(Component component)
       : fontSize = DoubleBox(component['fontSize']),
         letterSpacing = DoubleBox(component['letterSpacing']),
-        wordSpacing = DoubleBox(component['wordSpacing']);
+        wordSpacing = DoubleBox(component['wordSpacing']),
+        fontWeight = CoreBox(component['fontWeight']),
+        fontStyle = CoreBox(component['fontStyle']);
 
   final DoubleBox fontSize;
 
   final DoubleBox letterSpacing;
 
   final DoubleBox wordSpacing;
+
+  final CoreBox<FontWeight> fontWeight;
+  final CoreBox<FontStyle> fontStyle;
 
   @override
   Widget get editor => Layout(
@@ -99,7 +104,10 @@ class TextStyleBox extends MultiBox<TextStyle> {
         fontSize: fontSize.value,
         letterSpacing: letterSpacing.value,
         wordSpacing: wordSpacing.value,
+        fontWeight: fontWeight.value,
+        fontStyle: fontStyle.value,
       );
   @override
-  List<Box> get fields => [fontSize, letterSpacing, wordSpacing];
+  List<Box> get fields =>
+      [fontSize, letterSpacing, wordSpacing, fontWeight, fontStyle];
 }

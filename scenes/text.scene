@@ -1,9 +1,11 @@
 Text (
-  "PROTOTYPE",
+  "Hello World",
   style : TextStyle (
-    letterSpacing : Lambdatm(1),
+    letterSpacing : 1,
     fontSize : 32,
-    wordSpacing : 0
+    wordSpacing : 0,
+    fontWeight: FontWeight.w200,
+    fontStyle: FontStyle.italic,
   ),
-  textAlign: TextAlign.center
+  textAlign: TextAlign.center,
 )

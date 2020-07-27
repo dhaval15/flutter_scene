@@ -54,4 +54,8 @@ const FLUTTER_GLOBALS = {
     'w800': FontWeight.w800,
     'w900': FontWeight.w900,
   },
+  'FontStyle': {
+    'italic': FontStyle.italic,
+    'normal': FontStyle.normal,
+  }
 };

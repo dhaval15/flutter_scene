@@ -2,6 +2,8 @@
  */
 
 import 'package:petitparser/petitparser.dart';
+import 'package:flurine_lambda/flurine_lambda.dart'
+    hide CLOSE_PARENTHESIS, OPEN_PARENTHESIS, COMMA, DOLLAR;
 import 'token.dart';
 import 'keywords.dart';
 
@@ -55,6 +57,7 @@ class ComponentGrammarDefinition extends GrammarDefinition with TokenMixin {
       ref(component) |
       ref(listToken) |
       ref(colorToken) |
+      ref(LambdaParserDefinition().func) |
 //      ref(lambdaToken) |
 //      ref(varToken) |
       ref(variable) |
