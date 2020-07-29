@@ -7,6 +7,77 @@ typedef OnSelectListener = Function(dynamic value);
 
 typedef ValueConverter<To, From> = To Function(From value);
 
+class SelectEnum extends StatelessWidget {
+  final String label;
+  final String value;
+  final List<String> initialValues;
+  final OnSelectListener listener;
+  List<Widget> get actions => [];
+
+  const SelectEnum({
+    Key key,
+    this.label,
+    this.value,
+    this.initialValues,
+    this.listener,
+  }) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(left: 8, right: 4),
+      child: Row(
+        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Flexible(
+            flex: 2,
+            child: SizedBox(
+              width: double.infinity,
+              child: Text(
+                label,
+                textWidthBasis: TextWidthBasis.parent,
+                maxLines: 2,
+                textAlign: TextAlign.start,
+                style: TextStyle(fontSize: 13),
+              ),
+            ),
+          ),
+          Flexible(
+            flex: 7,
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 8),
+              color: Colors.white.withAlpha(10),
+              child: DropdownButton<String>(
+                isExpanded: true,
+                value: value,
+                items: initialValues
+                    .map((v) => DropdownMenuItem(
+                          child: Text(v),
+                          value: v,
+                        ))
+                    .toList(),
+                style: TextStyle(fontSize: 13),
+                onChanged: listener,
+              ),
+            ),
+          ),
+          ...actions,
+          SizedBox(
+            width: 8,
+          ),
+          GestureDetector(
+            onTap: () {},
+            child: Icon(
+              Icons.edit,
+              size: 16,
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
 class SelectString extends Select<String> {
   SelectString({
     Key key,

@@ -1,5 +1,6 @@
 import 'package:flurine_lambda/flurine_lambda.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_scene/src/globals/globals.dart';
 
 import '../component/models.dart';
 import '../component/select.dart';
@@ -95,6 +96,23 @@ class TextStyleBox extends MultiBox<TextStyle> {
                 wordSpacing.lambda = value;
               else
                 wordSpacing.value = value;
+            },
+          ),
+          SelectEnum(
+            label: 'Font Weight',
+            value: 'w100',
+            initialValues: FLUTTER_GLOBALS['FontWeight'].keys.toList(),
+            listener: (value) {
+              fontWeight.value = FLUTTER_GLOBALS['FontWeight'][value];
+            },
+          ),
+          SelectEnum(
+            label: 'Font Style',
+            value: 'normal',
+            initialValues: FLUTTER_GLOBALS['FontStyle'].keys.toList(),
+            listener: (value) {
+              print(value);
+              fontStyle.value = FLUTTER_GLOBALS['FontStyle'][value];
             },
           ),
         ],
