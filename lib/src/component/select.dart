@@ -7,13 +7,11 @@ typedef OnSelectListener = Function(dynamic value);
 
 typedef ValueConverter<To, From> = To Function(From value);
 
-class SelectEnum extends StatelessWidget {
+class SelectEnum extends StatefulWidget {
   final String label;
   final String value;
   final List<String> initialValues;
   final OnSelectListener listener;
-  List<Widget> get actions => [];
-
   const SelectEnum({
     Key key,
     this.label,
@@ -21,6 +19,28 @@ class SelectEnum extends StatelessWidget {
     this.initialValues,
     this.listener,
   }) : super(key: key);
+
+  @override
+  _SelectEnumState createState() => _SelectEnumState();
+}
+
+class _SelectEnumState extends State<SelectEnum> {
+  String value;
+  List<Widget> get actions => [];
+
+  @override
+  void initState() {
+    super.initState();
+    value = widget.value;
+  }
+
+  void onChanged(String value) {
+    setState(() {
+      this.value = value;
+    });
+    widget.listener(value);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -34,7 +54,7 @@ class SelectEnum extends StatelessWidget {
             child: SizedBox(
               width: double.infinity,
               child: Text(
-                label,
+                widget.label,
                 textWidthBasis: TextWidthBasis.parent,
                 maxLines: 2,
                 textAlign: TextAlign.start,
@@ -50,14 +70,16 @@ class SelectEnum extends StatelessWidget {
               child: DropdownButton<String>(
                 isExpanded: true,
                 value: value,
-                items: initialValues
+                underline: SizedBox(),
+                icon: SizedBox(),
+                items: widget.initialValues
                     .map((v) => DropdownMenuItem(
                           child: Text(v),
                           value: v,
                         ))
                     .toList(),
                 style: TextStyle(fontSize: 13),
-                onChanged: listener,
+                onChanged: onChanged,
               ),
             ),
           ),
