@@ -5,7 +5,7 @@ Text (
     fontSize : 32,
     wordSpacing : 0,
     fontWeight: FontWeight.w200,
-    fontStyle: FontStyle.italic,
+    fontStyle: FontStyle.normal,
   ),
   textAlign: TextAlign.center,
 )
